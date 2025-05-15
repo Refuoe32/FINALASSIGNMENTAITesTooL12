@@ -1,0 +1,265 @@
+/* Custom styles for AI Test Tool */
+
+/* General theme preferences */
+:root {
+    --primary-bg: #0d1117;
+    --secondary-bg: #161b22;
+    --primary-text: #ffffff;
+    --sidebar-width: 60px;
+    --technique-card-height: 160px;
+    
+    /* Technique card colors */
+    --model-based-color: #7057ff;
+    --behavior-driven-color: #2ea44f;
+    --mutation-color: #f85149;
+    --reinforcement-color: #58a6ff;
+    --fuzz-color: #d29922;
+    --uml-color: #8b949e;
+}
+
+/* Layout */
+body {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    overflow-x: hidden;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: var(--secondary-bg);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+}
+
+.sidebar-brand {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-item {
+    margin: 8px 0;
+}
+
+.sidebar-link {
+    color: #8b949e;
+    text-decoration: none;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.sidebar-link:hover, .sidebar-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-link i {
+    font-size: 1.5rem;
+}
+
+/* Main content area */
+.main-content {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    min-height: 100vh;
+}
+
+/* Dashboard stats cards */
+.stat-card {
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.projects-card {
+    background-color: #7957ff;
+}
+
+.test-runs-card {
+    background-color: #2ea44f;
+}
+
+.completed-card {
+    background-color: #58a6ff;
+}
+
+.failed-card {
+    background-color: #f85149;
+}
+
+/* Test case styling */
+.test-steps {
+    padding-left: 0;
+}
+
+.test-steps li {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Technique cards for image 1 */
+.techniques-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.technique-card {
+    height: var(--technique-card-height);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background-color: var(--secondary-bg);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.technique-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.technique-card.active {
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.technique-card.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: white;
+}
+
+.technique-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.model-based .technique-icon {
+    background-color: var(--model-based-color);
+}
+
+.behavior-driven .technique-icon {
+    background-color: var(--behavior-driven-color);
+}
+
+.mutation .technique-icon {
+    background-color: var(--mutation-color);
+}
+
+.reinforcement .technique-icon {
+    background-color: var(--reinforcement-color);
+}
+
+.fuzz .technique-icon {
+    background-color: var(--fuzz-color);
+}
+
+.uml-based .technique-icon {
+    background-color: var(--uml-color);
+}
+
+.technique-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.technique-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Theme-aware elements */
+[data-bs-theme="dark"] {
+    --primary-bg: #0d1117;
+    --secondary-bg: #161b22;
+}
+
+[data-bs-theme="light"] {
+    --primary-bg: #f8f9fa;
+    --secondary-bg: #ffffff;
+}
+
+[data-bs-theme="contrast"] {
+    --primary-bg: #000000;
+    --secondary-bg: #222222;
+}
+
+/* Color picker styling */
+.form-control-color {
+    width: 100%;
+    height: 38px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .sidebar.show {
+        width: var(--sidebar-width);
+    }
+    
+    .card-title {
+        font-size: 1.25rem;
+    }
+    
+    .display-6 {
+        font-size: 1.5rem;
+    }
+    
+    .techniques-container {
+        grid-template-columns: 1fr;
+    }
+}
